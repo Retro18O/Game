@@ -11,10 +11,10 @@ public class MainMenu : MonoBehaviour
     public double Metal;
     public double Rock;
     public double Food;
-    public double woodIncrement;
-    public double metalIncrement;
-    public double rockIncrement;
-    public double foodIncrement;
+    public double woodIncrement = 0;
+    public double metalIncrement = 0;
+    public double rockIncrement = 0;
+    public double foodIncrement = 0;
 
     public Text WoodText;
     public Text MetalText;
@@ -27,11 +27,15 @@ public class MainMenu : MonoBehaviour
         Metal = PlayerPrefs.GetInt("metal");
         Rock = PlayerPrefs.GetInt("rock");
         Food = PlayerPrefs.GetInt("food");
+        CalculateOfflainIncome();
     }
 
-    public void CalculateOfflainIncome()
+    private void OnApplicationQuit()
     {
         PlayerPrefs.SetString("LastPlayedTime", DateTime.UtcNow.ToString());
+    }
+    private void CalculateOfflainIncome()
+    {
         string LastPlayedTimeString = PlayerPrefs.GetString("LastPlayedTime", null);
         if (LastPlayedTimeString == null)
         {
