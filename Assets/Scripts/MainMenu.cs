@@ -27,14 +27,14 @@ public class MainMenu : MonoBehaviour
         Metal = PlayerPrefs.GetInt("metal");
         Rock = PlayerPrefs.GetInt("rock");
         Food = PlayerPrefs.GetInt("food");
-        CalculateOfflainIncome();
+        CalculateOfflineIncome();
     }
 
     private void OnApplicationQuit()
     {
         PlayerPrefs.SetString("LastPlayedTime", DateTime.UtcNow.ToString());
     }
-    private void CalculateOfflainIncome()
+    private void CalculateOfflineIncome()
     {
         string LastPlayedTimeString = PlayerPrefs.GetString("LastPlayedTime", null);
         if (LastPlayedTimeString == null)
